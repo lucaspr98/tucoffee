@@ -4,9 +4,40 @@
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
+	<footer>
+		<span>Icons created by Rifaidi Akbar and Fajriah Robiatul from Noun Project; <a href="https://www.freepik.com/free-photo/close-up-view-dark-fresh-roasted-coffee-beans-coffee-beans-background_10427093.htm#query=coffee%20beans&position=4&from_view=search&track=ais">Image by stockking</a> on Freepik</span>
+	</footer>
 </html>
+
+<style>
+	body {
+        background-color: rgb(236,224,209);
+		background-image: url('%sveltekit.assets%/coffee_beans.jpg');
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-position: center;
+		font-family: 'Roboto';
+	}
+	footer {
+		background-color: rgb(236,224,209);
+		width: 100vw;
+		position: fixed;
+		bottom: 0;
+		margin: 0px -8px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 8px
+	}
+    span {
+        font-weight: bold;
+        font-size: small;
+    }
+</style>
