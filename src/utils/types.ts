@@ -8,7 +8,6 @@ export enum Grind {
 
 export type Recipe = {
     id: string;
-    author: string;
     grind: Grind;
     water: number;
     temperature: number;
@@ -23,4 +22,5 @@ export type Method = {
     name: string;
     image: string;
     unlocked: boolean;
+    recipes: Recipe[]
 }

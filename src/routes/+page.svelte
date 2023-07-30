@@ -1,50 +1,44 @@
 <script lang="ts">
-    import { initializeApp } from "firebase/app";
-    import { collection, getDocs, getFirestore, orderBy, query } from "firebase/firestore";
     import Methods from "../componentes/Methods.svelte";
     import Recipes from "../componentes/Recipes.svelte";
-    import type { Method } from "../utils/types";
-
-    import { onMount } from 'svelte';
-
-    let firebaseInitialized = false
+    import type { Method, Recipe } from "../utils/types";
     
-    const initFirebase = async () => {
-        const firebaseConfig = {
-            apiKey: "AIzaSyBfcEUIJdvoZweWzis08NUYjb7qHJdyKQM",
-            authDomain: "tucoffee-a3510.firebaseapp.com",
-            projectId: "tucoffee-a3510",
-            storageBucket: "tucoffee-a3510.appspot.com",
-            messagingSenderId: "364357619825",
-            appId: "1:364357619825:web:6a344fda41809886f2cbd0"
-        };
+    const getMethods = async (): Promise<Method[]> => {
+        try {
+            const response = await fetch("https://tucoffee-7581.restdb.io/rest/method?q={}&h={\"$orderby\": {\"unlocked\":-1}}", {
+                method: 'GET',
+                headers: {
+                    'x-apikey': '64c5c96a86d8c563ebed92b0'
+                } 
+            });
+            const methods: Method[] = [];
+            await response.json().then(r => r.forEach((method: any) => 
+                methods.push({
+                    id: method._id,
+                    name: method.name,
+                    image:  method.image_url,
+                    unlocked:  method.unlocked,
+                    recipes: method.recipes.map((rec: any) => ({
+                        id: rec._id,
+                        grind: rec.grind,
+                        water: rec.water,
+                        temperature: rec.temperature,
+                        weight: rec.weight,
+                        steps: rec.steps,
+                        produce: rec.produce,
+                        time: rec.time
+                    }) as Recipe)
+                } as Method
+            )))
 
-        initializeApp(firebaseConfig);
-
-        firebaseInitialized = true
-    }
-    
-    onMount(initFirebase);
-    
-    const getMethods = async (initialized: boolean): Promise<Method[]> => {
-        if(!initialized) return [];
-        
-        const db = getFirestore()
-        const q = query(collection(db, "Method"), orderBy("unlocked", "desc"))
-        const queryMethods = await getDocs(q);
-        const methods: Method[] = [];
-        queryMethods.forEach(async (doc) => {
-            methods.push({
-            id: doc.id,
-            name: doc.get('name'),
-            image:  doc.get('image'),
-            unlocked:  doc.get('unlocked'),
-            recipes: []
-        } as Method)})
-        return methods;
+            return methods;
+        } catch (e) {
+            console.error(e)
+        }
+        return [];
     }
 
-    $: methodsPromise = getMethods(firebaseInitialized);    
+    $: methodsPromise = getMethods();    
 </script>
 
 <div>
