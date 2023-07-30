@@ -59,18 +59,21 @@
 </div>
 
 <style>
+    .container {
+        background-color: rgb(236,224,209);
+        padding: 16px;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 16px;
+        border: solid rgb(160, 129, 92);
+    }
     .info {
         display: flex;
         gap: 16px;
     }
-    .info-card-details {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 4px;
-
-    }
-
     .info-card {
         display: flex;
         flex-direction: row;
@@ -81,6 +84,14 @@
         gap: 8px;
         padding: 8px;
         width: 100%;
+        border: solid rgb(206, 176, 139);
+}
+    .info-card-details {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+
     }
     .info img {
         object-fit: contain;
@@ -94,16 +105,6 @@
     }
     .info p {
         text-align: center;
-    }
-    .container {
-        background-color: rgb(236,224,209);
-        padding: 16px;
-        border-radius: 5px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        gap: 16px;
-        margin-bottom: 16px;
     }
     .steps { 
         display: flex;
