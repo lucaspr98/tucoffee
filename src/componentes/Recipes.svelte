@@ -31,7 +31,7 @@
 <style>
     div {
         width: 90%;
-        min-height: 60vh;
+        height: 60%;
         background-color: rgba(219,193,172,0.9);
         border-radius: 0px 0px 16px 16px;
         padding: 8px 16px;

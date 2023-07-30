@@ -13,7 +13,7 @@ export type Recipe = {
     temperature: number;
     weight: number;
     steps: string[];
-    produce: number;
+    produces: number;
     time: string;
 }
 

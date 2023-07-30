@@ -25,7 +25,7 @@
                         temperature: rec.temperature,
                         weight: rec.weight,
                         steps: rec.steps,
-                        produce: rec.produce,
+                        produces: rec.produces,
                         time: rec.time
                     }) as Recipe)
                 } as Method

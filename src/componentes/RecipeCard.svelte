@@ -2,12 +2,13 @@
 <script lang="ts">
 	import type { Grind } from "../utils/types";
 
+    export let id: string;
     export let grind: Grind;
     export let water: number;
     export let temperature: number;
     export let weight: number;
     export let steps: string[];
-    export let produce: number;
+    export let produces: number;
     export let time: string;
 </script>
 
@@ -30,8 +31,8 @@
         </div>
         <div class="info-card">
             <p>Rendimento</p>
-            <img src="cup.svg" alt="produce">
-            <span>{produce}ml</span>
+            <img src="cup.svg" alt="produces">
+            <span>{produces}ml</span>
         </div>
         <div class="info-card">
             <p>Tempo de extração</p>

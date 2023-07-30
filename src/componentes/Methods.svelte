@@ -28,6 +28,7 @@
 <style>
     .container {
         display: flex;
+        height: 20%;
         flex-direction: column;
         justify-content: space-between;
         width: 90%;
@@ -37,11 +38,11 @@
         overflow-x: auto; 
         border: solid rgb(236,224,209) 4px;
         border-radius: 5px;
-        min-height: 15vh;
     }
     .methods {
         display: flex; 
         gap: 32px;
         padding-right: 16px;
+        height: 100%;
     }
 </style>

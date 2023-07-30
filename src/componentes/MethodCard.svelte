@@ -1,13 +1,17 @@
 <script lang="ts">
+	import type { Recipe } from "../utils/types";
+
+    export let id: string;
     export let name: string;
     export let image: string;
     export let unlocked: boolean;
     export let selected: boolean;
     export let onSelect: () => void;
+    export let recipes: Recipe[];
 </script>
 
 
-<button class="method-button" class:selected={selected} on:click={onSelect} disabled={!unlocked}>
+<button class="method-button" class:selected={selected} on:click={onSelect} disabled={!unlocked} >
     <div class="button-content" >
         <img src={image} alt={`${name}_img`}>
         <span>{name}</span>
