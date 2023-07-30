@@ -27,7 +27,7 @@
 
 <style>
     .container {
-        display: flex;
+        display: inline-flex;
         height: 20%;
         flex-direction: column;
         justify-content: space-between;
@@ -42,7 +42,6 @@
     .methods {
         display: flex; 
         gap: 32px;
-        padding-right: 16px;
         height: 100%;
     }
 </style>

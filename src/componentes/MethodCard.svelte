@@ -27,28 +27,29 @@
         aspect-ratio: 1 / 1;
         background: rgb(236,224,209);
         border-radius: 25px;
-        padding: 16px;
+        padding: 8px;
         border: solid rgb(160, 129, 92);
     }
     .button-content {
+        position: relative;
         height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
+        display: inline-block;
         align-items: center;
-        height: 100%;
-        display: flex;
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
     }
     .button-content img {
         object-fit: contain;
+        height: 100%;
     }
     .button-content span {
         font-weight: bold;
-        font-size: large;
-        margin-top: -32px;
+        font-size: 2.2vh;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
    }
    .selected {
         background: rgb(150,114,89);
