@@ -37,6 +37,7 @@
         overflow-x: auto; 
         border: solid rgb(236,224,209) 4px;
         border-radius: 5px;
+        min-height: 15vh;
     }
     .methods {
         display: flex; 

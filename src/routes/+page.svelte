@@ -45,7 +45,7 @@
     {#await methodsPromise}
         <div class="loading">
             <h2>Buscando receitas...</h2>
-            <img src="/togo.svg" alt="loading">
+            <img src="togo.svg" alt="loading">
         </div>
     {:then methods}
         <Methods methods={methods}/>

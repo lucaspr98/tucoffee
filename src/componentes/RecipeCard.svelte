@@ -15,22 +15,22 @@
     <div class="info">
         <div class="info-card">
             <p>Quantidade</p>
-            <img src="/bean.svg" alt="quantity">
+            <img src="bean.svg" alt="quantity">
             <span>{weight}g</span>
         </div>
         <div class="info-card">
             <p>Moagem</p>
-            <img src="/grinder.svg" alt="grind">
+            <img src="grinder.svg" alt="grind">
             <span>{grind}</span>
         </div>
         <div class="info-card">
             <p>Água</p>
-            <img src="/water.svg" alt="water">
+            <img src="water.svg" alt="water">
             <span>{water}g ({temperature}°C)</span>
         </div>
         <div class="info-card">
             <p>Rendimento</p>
-            <img src="/cup.svg" alt="produce">
+            <img src="cup.svg" alt="produce">
             <span>{produce}ml</span>
         </div>
         <div class="info-card">
