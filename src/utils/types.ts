@@ -15,6 +15,8 @@ export type Recipe = {
     steps: string[];
     produces: number;
     time: string;
+    author: string;
+    reference: string;
 }
 
 export type Method = {

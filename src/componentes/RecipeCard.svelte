@@ -10,33 +10,45 @@
     export let steps: string[];
     export let produces: number;
     export let time: string;
+    export let author: string;
+    export let reference: string;
 </script>
 
 <div class="container">
+    <div class="header">
+        <p>
+            Autor: <span>{author}</span><a href={reference} target="_blank">*</a>
+        </p>
+        <div class="time">
+            <i class="fa fa-clock-o" style="font-size:24px"></i>
+            <p>Tempo de extração aproximado:</p>
+            <span>{time}</span>
+        </div>
+    </div>
     <div class="info">
         <div class="info-card">
-            <img src="bean.svg" alt="quantity">
+            <img src="coffee-bag.png" alt="quantity">
             <div class="info-card-details">
                 <p>Quantidade:</p>
                 <span>{weight}g</span>
             </div>
         </div>
         <div class="info-card">
-            <img src="grinder.svg" alt="grind">
+            <img src="grinder.png" alt="grind">
             <div class="info-card-details">
                 <p>Moagem:</p>
                 <span>{grind}</span>
             </div>
         </div>
         <div class="info-card">
-            <img src="water.svg" alt="water">
+            <img src="kettle.png" alt="water">
             <div class="info-card-details">
                 <p>Água:</p>
                 <span>{water}g ({temperature}°C)</span>
             </div>
         </div>
         <div class="info-card">
-            <img src="cup.svg" alt="produces">
+            <img src="cup.png" alt="produces">
             <div class="info-card-details">
                 <p>Rendimento:</p>
                 <span>{produces}ml</span>
@@ -50,11 +62,6 @@
             <li>{step}</li>
             {/each}
         </ol>
-        <div class="time">
-            <i class="fa fa-clock-o" style="font-size:24px"></i>
-            <p>Tempo de extração aproximado:</p>
-            <span>{time}</span>
-        </div>
     </div>
 </div>
 
@@ -73,6 +80,11 @@
     .info {
         display: flex;
         gap: 16px;
+    }
+    .header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
     }
     .info-card {
         display: flex;
@@ -95,16 +107,15 @@
     }
     .info img {
         object-fit: contain;
-        max-height: 75px;
-        margin-bottom: -15px;
+        max-height: 50px;
     }
     p {
         font-weight: bold;
         font-size: large;
         margin: 0px;
     }
-    .info p {
-        text-align: center;
+    p > span {
+        font-weight: normal;
     }
     .steps { 
         display: flex;
@@ -130,6 +141,9 @@
         }
         .info-card-details {
             flex-direction: row;
+        }
+        .header {
+            flex-direction: column;
         }
     }
 </style>

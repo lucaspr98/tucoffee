@@ -33,7 +33,7 @@
     .button-content {
         position: relative;
         height: 100%;
-        display: inline-block;
+        display: flex;
         align-items: center;
         flex-direction: column;
         justify-content: space-around;
@@ -41,15 +41,11 @@
     }
     .button-content img {
         object-fit: contain;
-        height: 100%;
+        height: 70%;
     }
     .button-content span {
         font-weight: bold;
         font-size: 2.2vh;
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
    }
    .selected {
         background: rgb(150,114,89);

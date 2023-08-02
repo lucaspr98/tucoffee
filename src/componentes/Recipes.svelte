@@ -23,7 +23,7 @@
     {:else}
         <section class="no-selected">
             <h1>Selecione um método acima</h1>
-            <img src="togo.svg" alt="loading">
+            <img src="togo.png" alt="loading">
         </section>
     {/if}   
 </div>

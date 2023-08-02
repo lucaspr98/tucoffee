@@ -26,7 +26,9 @@
                         weight: rec.weight,
                         steps: rec.steps,
                         produces: rec.produces,
-                        time: rec.time
+                        time: rec.time,
+                        author: rec.author,
+                        reference: rec.reference
                     }) as Recipe)
                 } as Method
             )))
@@ -43,10 +45,7 @@
 
 <div>
     {#await methodsPromise}
-        <div class="loading">
-            <h2>Buscando receitas...</h2>
-            <img src="togo.svg" alt="loading">
-        </div>
+        <h1>Buscando receitas...</h1>
     {:then methods}
         <Methods methods={methods}/>
         <Recipes />
@@ -65,16 +64,8 @@
         max-width: 100vw;
         height: calc(100vh - 64px);
     }
-    .loading {
-        height: 25vh;
-        aspect-ratio: 1 / 1;
-        border-radius: 50%;
-        background-color: rgb(236,224,209, 0.9);
-        justify-content: center;
-        align-self: center;
-        padding: 128px
-    }
-    .loading img {
+    h1 {
+        color: rgb(236,224,209, 0.9);
         animation: fade 1.5s alternate infinite ease-in;
     }
     @keyframes fade {
