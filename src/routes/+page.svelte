@@ -1,57 +1,33 @@
 <script lang="ts">
-    import Methods from "../componentes/Methods.svelte";
-    import Recipes from "../componentes/Recipes.svelte";
-    import type { Method, Recipe } from "../utils/types";
-    
-    const getMethods = async (): Promise<Method[]> => {
-        try {
-            const response = await fetch("https://tucoffee-7581.restdb.io/rest/method?q={}&h={\"$orderby\": {\"unlocked\":-1, \"name\": 1}}", {
-                method: 'GET',
-                headers: {
-                    'x-apikey': '64c5c96a86d8c563ebed92b0'
-                } 
-            });
-            const methods: Method[] = [];
-            await response.json().then(r => r.forEach((method: any) => 
-                methods.push({
-                    id: method._id,
-                    name: method.name,
-                    image:  method.image_url,
-                    unlocked:  method.unlocked,
-                    recipes: method.recipes.map((rec: any) => ({
-                        id: rec._id,
-                        grind: rec.grind,
-                        water: rec.water,
-                        temperature: rec.temperature,
-                        weight: rec.weight,
-                        steps: rec.steps,
-                        produces: rec.produces,
-                        time: rec.time,
-                        author: rec.author,
-                        reference: rec.reference
-                    }) as Recipe)
-                } as Method
-            )))
+    import Methods from '../componentes/Methods.svelte';
+    import Recipes from '../componentes/Recipes.svelte';
+    import type { Method, Recipe } from '../utils/types.js';
 
-            return methods;
-        } catch (e) {
-            console.error(e)
-        }
-        return [];
-    }
+    export let data;
 
-    $: methodsPromise = getMethods();    
+    $: methods = data.methods.map((method :any) => ({
+                id: method._id,
+                name: method.name,
+                image:  method.image_url,
+                unlocked:  method.unlocked,
+                recipes: method.recipes.map((rec: any) => ({
+                    id: rec._id,
+                    grind: rec.grind,
+                    water: rec.water,
+                    temperature: rec.temperature,
+                    weight: rec.weight,
+                    steps: rec.steps,
+                    produces: rec.produces,
+                    time: rec.time,
+                    author: rec.author,
+                    reference: rec.reference
+                }) as Recipe)
+            } as Method))
 </script>
 
 <div>
-    {#await methodsPromise}
-        <h1>Buscando receitas...</h1>
-    {:then methods}
-        <Methods methods={methods}/>
-        <Recipes />
-    {:catch message}
-        <p>{message}</p>
-    {/await}
+    <Methods methods={methods}/>
+    <Recipes />
 </div>
 
 <style>

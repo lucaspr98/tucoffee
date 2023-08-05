@@ -16,9 +16,10 @@
 
 <div class="container">
     <div class="header">
-        <p>
-            Autor: <span>{author}</span><a href={reference} target="_blank">*</a>
-        </p>
+        <div class="time">
+            <i class="fa fa-user-o" style="font-size:24px"></i>
+            <p>Autor: <span>{author}</span><a href={reference} target="_blank">*</a></p>
+        </div>            
         <div class="time">
             <i class="fa fa-clock-o" style="font-size:24px"></i>
             <p>Tempo de extração aproximado:</p>
@@ -78,13 +79,15 @@
         border: solid rgb(160, 129, 92);
     }
     .info {
-        display: flex;
+        display: grid;
+        grid-auto-flow: column;
         gap: 16px;
     }
     .header {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: flex-start;
+        gap: 16px;
     }
     .info-card {
         display: flex;
@@ -95,7 +98,6 @@
         border-radius: 15px;
         gap: 8px;
         padding: 8px;
-        width: 100%;
         border: solid rgb(206, 176, 139);
 }
     .info-card-details {
@@ -103,7 +105,6 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 4px;
-
     }
     .info img {
         object-fit: contain;
@@ -134,13 +135,13 @@
         align-items: center;
         gap: 8px
     }
-    @media screen and (max-width: 720px) {
+    @media screen and (max-width: 800px) {
         .info {
-            flex-direction: column;
-            width: 100%;
+            grid-auto-flow: row;
         }
         .info-card-details {
             flex-direction: row;
+            align-items: center;
         }
         .header {
             flex-direction: column;

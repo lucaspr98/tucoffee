@@ -11,6 +11,7 @@
 
     const handleSelect = (method: Method) => {
         selectedMethod.set(method);
+        document.getElementById("recipes-div")?.scrollTo({top: 0, behavior: "smooth"});
     }
 
     export let methods: Method[];
@@ -29,7 +30,7 @@
     .container {
         display: inline-flex;
         height: 20%;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: space-between;
         width: 90%;
         background-color: rgba(219,193,172,0.9);

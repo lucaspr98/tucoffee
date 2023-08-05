@@ -10,7 +10,7 @@
 	});
 </script>
 
-<div>
+<div id="recipes-div">
     {#if method}
         <h1>Receitas de {method?.name}</h1>
         {#if method.recipes.length > 0}
