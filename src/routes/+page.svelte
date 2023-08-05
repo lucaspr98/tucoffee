@@ -1,33 +1,50 @@
 <script lang="ts">
-    import Methods from '../componentes/Methods.svelte';
-    import Recipes from '../componentes/Recipes.svelte';
-    import type { Method, Recipe } from '../utils/types.js';
-
-    export let data;
-
-    $: methods = data.methods.map((method :any) => ({
-                id: method._id,
-                name: method.name,
-                image:  method.image_url,
-                unlocked:  method.unlocked,
-                recipes: method.recipes.map((rec: any) => ({
-                    id: rec._id,
-                    grind: rec.grind,
-                    water: rec.water,
-                    temperature: rec.temperature,
-                    weight: rec.weight,
-                    steps: rec.steps,
-                    produces: rec.produces,
-                    time: rec.time,
-                    author: rec.author,
-                    reference: rec.reference
-                }) as Recipe)
-            } as Method))
+    import Methods from "../componentes/Methods.svelte";
+    import Recipes from "../componentes/Recipes.svelte";
+    import { fetchMethodsJson } from "../service/restdb";
+    import type { Method, Recipe } from "../utils/types";
+    
+    const getMethods = async (): Promise<Method[]> => {
+        try {
+            const methods: Method[] = [];
+            await fetchMethodsJson().then(r => r.forEach((method: any) => 
+                methods.push({
+                    id: method._id,
+                    name: method.name,
+                    image:  method.image_url,
+                    unlocked:  method.unlocked,
+                    recipes: method.recipes.map((rec: any) => ({
+                        id: rec._id,
+                        grind: rec.grind,
+                        water: rec.water,
+                        temperature: rec.temperature,
+                        weight: rec.weight,
+                        steps: rec.steps,
+                        produces: rec.produces,
+                        time: rec.time,
+                        author: rec.author,
+                        reference: rec.reference
+                    }) as Recipe)
+                } as Method
+            )))
+            return methods;
+        } catch (e) {
+            console.error(e)
+        }
+        return [];
+    }
+    $: methodsPromise = getMethods();  
 </script>
 
 <div>
-    <Methods methods={methods}/>
-    <Recipes />
+    {#await methodsPromise}
+        <h1>Buscando receitas...</h1>
+    {:then methods}
+        <Methods methods={methods}/>
+        <Recipes />
+    {:catch message}
+        <p>{message}</p>
+    {/await}
 </div>
 
 <style>
